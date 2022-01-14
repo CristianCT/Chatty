@@ -53,20 +53,27 @@ export default class Chat extends Component {
 
     render() {
         return (
-            <div>
-              <div className="chats">
-                {this.state.chats.map(chat => {
-                  return <p key={chat.timestamp}>{chat.content}</p>
-                })}
+            <div className="card chat" >
+              <h5 class="card-header bg-info"><center>Chatty</center></h5>
+              <div className="m-3" >
+                <div className="chats">
+                  {this.state.chats.map(chat => {
+                    
+                    return <div className="message" ><p key={chat.timestamp}>{chat.content}</p></div>
+                  })}
+                </div>
               </div>
-              {/* {# message form #} */}
-              <form onSubmit={this.handleSubmit}>
-                <input onChange={this.handleChange} value={this.state.content}></input>
-                {this.state.error ? <p>{this.state.writeError}</p> : null}
-                <button type="submit">Send</button>
-              </form>
-              <div>
-                Login in as: <strong>{this.state.user.email}</strong>
+              <div className="card-footer" >
+                <form onSubmit={this.handleSubmit}>
+                    <div class="input-group mb-3">
+                      <input onChange={this.handleChange} value={this.state.content} type="text" className="form-control" aria-label="Recipient's username" aria-describedby="button-send"></input>
+                      {this.state.error ? <p>{this.state.writeError}</p> : null}
+                      <button type="submit" className="btn btn-outline-info" id="button-send"> <img src="https://img.icons8.com/color/20/000000/filled-sent.png" alt="icono" />Send</button>
+                    </div>
+                </form>
+                <div>
+                  Login in as: <strong>{this.state.user.email}</strong>
+                </div>
               </div>
             </div>
         );

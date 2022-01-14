@@ -49,33 +49,48 @@ export default class Signup extends Component {
         }
     }
 
-    render() {
-        return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <h1>Sign Up to<Link to="/">Chatty</Link></h1>
-                    <p>Fill in the form below to create an account.</p>
-                    <div>
-                        <input placeholder="Email" name="email" type="email" onChange={this.handleChange} value={this.state.email}></input>
+  render() {
+    return (
+      <section className="login-block">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-sm-12">
+              <form className="md-float-material form-material" onSubmit={this.handleSubmit}>
+                <div className="auth-box card">
+                  <div className="card-block">
+                    <div className="row">
+                      <h1>Sign Up to <Link className="link-without-border" to="/">CHATTY</Link></h1>
+                      <p>Fill in the form below to create an account.</p>
+                    </div>
+                    <div className="form-group form-primary">
+                      <input type="email" className="form-control" placeholder="Email" name="email" onChange={this.handleChange} value={this.state.email}></input>
+                    </div>
+                    <div className="form-group form-primary">
+                      <input type="password" className="form-control" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password}></input>
                     </div>
                     <div>
-                        <input placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password} type="password"></input>
-                    </div>
-                    <div>
-                        {this.state.error ? <p>{this.state.error}</p> : null}
-                        <button type="submit">Sign up</button>
-                        <p>Or</p>
-                        <button onClick={this.googleSignIn} type="button">
-                            Sign up with Google
+                      {this.state.error ? <p>{this.state.error}</p> : null}
+                      <div className="d-grid gap-2">
+                        <button type="button" className="btn btn-info btn-lg btn-block">Sign up</button>
+                        <center><p>Or</p></center>
+                        
+                        <button onClick={this.googleSignIn} type="button" className="btn btn-lg btn-google btn-block text-uppercase">
+                          <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="icon" /> Signup Using Google
                         </button>
-                        <button type="button" onClick={this.githubSignIn}>
-                            Sign up with GitHub
+                        <button onClick={this.githubSignIn} type="button" className="btn btn-lg btn-google btn-block text-uppercase">
+                          <img src="https://img.icons8.com/color/20/000000/github-2.png" alt="icon"/> Sign up with GitHub
                         </button>
+                      </div>
                     </div>
-                    <hr></hr>
-                    <p>Already have an account? <Link to="/login">Login</Link></p>
-                </form>
+                    <hr />
+                    <p className="text-inverse text-center">Already have an account? <Link className="link-without-border" to="/login">Login</Link></p>
+                  </div>
+                </div>
+              </form>
             </div>
-        )
-    }
+          </div>
+        </div>
+      </section>
+    )
+  }
 }

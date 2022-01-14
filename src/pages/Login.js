@@ -50,56 +50,46 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
-        <form
-          autoComplete="off"
-          onSubmit={this.handleSubmit}
-        >
-          <h1>
-            Login to
-            <Link to="/">
-              Chatty
-            </Link>
-          </h1>
-          <p>
-            Fill in the form below to login to your account.
-          </p>
-          <div>
-            <input
-              placeholder="Email"
-              name="email"
-              type="email"
-              onChange={this.handleChange}
-              value={this.state.email}
-            />
+      <section className="login-block">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-sm-12">
+              <form className="md-float-material form-material" autoComplete="off" onSubmit={this.handleSubmit}>
+                <div className="auth-box card">
+                  <div className="card-block">
+                    <div className="row">
+                      <h1>Login to<Link className="link-without-border" to="/"> CHATTY</Link></h1>
+                      <p>Fill in the form below to login to your account.</p>
+                    </div>
+                    <div className="form-group form-primary">
+                      <input placeholder="Email" className="form-control" name="email" type="email" onChange={this.handleChange} value={this.state.email} />
+                    </div>
+                    <div className="form-group form-primary">
+                      <input placeholder="Password" className="form-control" name="password" onChange={this.handleChange} value={this.state.password} type="password" />
+                    </div>
+                    <div>
+                      {this.state.error ? (
+                        <p>{this.state.error}</p>
+                      ) : null}
+                      <div className="d-grid gap-2">
+                        <button type="submit" className="btn btn-info btn-lg btn-block">Login</button>
+                        <button onClick={this.googleSignIn} type="button" className="btn btn-lg btn-google btn-block text-uppercase">
+                          <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="icon" /> Signup Using Google
+                        </button>
+                        <button type="button" onClick={this.githubSignIn} className="btn btn-lg btn-google btn-block text-uppercase">
+                          <img src="https://img.icons8.com/color/20/000000/github-2.png" alt="icon"/> Sign up with GitHub
+                        </button>
+                      </div>
+                    </div>
+                    <hr />
+                    <p className="text-inverse text-center">Don't have an account? <Link Link className="link-without-border" to="/signup">Sign up</Link></p>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
-          <div>
-            <input
-              placeholder="Password"
-              name="password"
-              onChange={this.handleChange}
-              value={this.state.password}
-              type="password"
-            />
-          </div>
-          <div>
-            {this.state.error ? (
-              <p>{this.state.error}</p>
-            ) : null}
-            <button type="submit">Login</button>
-            <button onClick={this.googleSignIn} type="button">
-                Sign up with Google
-            </button>
-            <button type="button" onClick={this.githubSignIn}>
-                Sign up with GitHub
-            </button>
-          </div>
-          <hr />
-          <p>
-            Don't have an account? <Link to="/signup">Sign up</Link>
-          </p>
-        </form>
-      </div>
+        </div>
+      </section>
     );
   }
 }

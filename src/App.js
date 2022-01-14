@@ -13,6 +13,8 @@ import PublicRoute from './components/PublicRoute';
 import PrivateRoute from './components/PrivateRoute';
 import { auth } from "./services/firebase";
 
+import "./styles.css"
+
 class App extends Component {
   constructor() {
     super();

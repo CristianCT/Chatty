@@ -155,4 +155,11 @@
 
 .chat{
   max-width: 500px;
+  height: 100%;
+}
+
+.chats{
+  position: relative;
+  overflow-y:scroll;
+  height: 500px;
 }
